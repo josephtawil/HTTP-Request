@@ -5,8 +5,10 @@ $(document).ready(function () {
     $.ajax({
         //the type of request that we want to make
         type: "GET",
+        //the url is a json url 
         url: "http://quotes.rest/qod.json",
     }).then(function (response) {
+        //then is saying that if all 
         //we are looking through the response API
         //we looked through the response,
         // then the contents inside the response,
@@ -19,5 +21,18 @@ $(document).ready(function () {
         //adding this to the page
         document.body.append(response.contents.quotes[0].author);
     });
-    //then is saying that if all 
+
+    $.ajax({
+        type: "GET",
+        url: "https://icanhazdadjoke.com/",
+        //we need the dataType set as json because 
+        dataType: "json",
+    }).then(function (response) {
+        console.log(response.joke);
+        $("body").prepend(`<p>${response.joke}</p>`);
+    });
+
+    $.ajax({
+        type: "GET",
+    })
 });
